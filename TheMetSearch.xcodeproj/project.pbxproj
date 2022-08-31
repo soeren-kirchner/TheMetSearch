@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1161305928BE65F20064B8F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1161305828BE65F20064B8F7 /* Constants.swift */; };
 		11FE5E8828BD2FF4008B4082 /* TheMetSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5E8728BD2FF4008B4082 /* TheMetSearchApp.swift */; };
 		11FE5E8A28BD2FF4008B4082 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5E8928BD2FF4008B4082 /* ContentView.swift */; };
 		11FE5E8C28BD2FF5008B4082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11FE5E8B28BD2FF5008B4082 /* Assets.xcassets */; };
@@ -14,6 +15,20 @@
 		11FE5E9928BD2FF6008B4082 /* TheMetSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5E9828BD2FF6008B4082 /* TheMetSearchTests.swift */; };
 		11FE5EA328BD2FF6008B4082 /* TheMetSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EA228BD2FF6008B4082 /* TheMetSearchUITests.swift */; };
 		11FE5EA528BD2FF6008B4082 /* TheMetSearchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EA428BD2FF6008B4082 /* TheMetSearchUITestsLaunchTests.swift */; };
+		11FE5EB328BD3B37008B4082 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB228BD3B37008B4082 /* Client.swift */; };
+		11FE5EB528BD3B6A008B4082 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB428BD3B6A008B4082 /* ClientError.swift */; };
+		11FE5EB728BD3BBA008B4082 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB628BD3BBA008B4082 /* API.swift */; };
+		11FE5EB928BD3BEA008B4082 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB828BD3BEA008B4082 /* LoadingState.swift */; };
+		11FE5EBC28BD3D1C008B4082 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EBB28BD3D1C008B4082 /* Objects.swift */; };
+		11FE5EBE28BD3D3A008B4082 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EBD28BD3D3A008B4082 /* Object.swift */; };
+		11FE5EC228BD3FBB008B4082 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EC128BD3FBB008B4082 /* SearchViewModel.swift */; };
+		11FE5EC428BD406F008B4082 /* ObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EC328BD406F008B4082 /* ObjectViewModel.swift */; };
+		11FE5EC628BD40B2008B4082 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EC528BD40B2008B4082 /* ImageViewModel.swift */; };
+		11FE5EC828BD4162008B4082 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EC728BD4162008B4082 /* SearchView.swift */; };
+		11FE5ECA28BD41AD008B4082 /* ObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EC928BD41AD008B4082 /* ObjectView.swift */; };
+		11FE5ECC28BD41FF008B4082 /* ObjectSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5ECB28BD41FF008B4082 /* ObjectSuccessView.swift */; };
+		11FE5ECE28BD4272008B4082 /* PrimaryImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5ECD28BD4272008B4082 /* PrimaryImageView.swift */; };
+		11FE5ED028BD5E87008B4082 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5ECF28BD5E87008B4082 /* ImageCacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1161305828BE65F20064B8F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		11FE5E8428BD2FF4008B4082 /* TheMetSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMetSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FE5E8728BD2FF4008B4082 /* TheMetSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchApp.swift; sourceTree = "<group>"; };
 		11FE5E8928BD2FF4008B4082 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +60,20 @@
 		11FE5E9E28BD2FF6008B4082 /* TheMetSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMetSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FE5EA228BD2FF6008B4082 /* TheMetSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchUITests.swift; sourceTree = "<group>"; };
 		11FE5EA428BD2FF6008B4082 /* TheMetSearchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		11FE5EB228BD3B37008B4082 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		11FE5EB428BD3B6A008B4082 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
+		11FE5EB628BD3BBA008B4082 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		11FE5EB828BD3BEA008B4082 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		11FE5EBB28BD3D1C008B4082 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		11FE5EBD28BD3D3A008B4082 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		11FE5EC128BD3FBB008B4082 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		11FE5EC328BD406F008B4082 /* ObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewModel.swift; sourceTree = "<group>"; };
+		11FE5EC528BD40B2008B4082 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
+		11FE5EC728BD4162008B4082 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		11FE5EC928BD41AD008B4082 /* ObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectView.swift; sourceTree = "<group>"; };
+		11FE5ECB28BD41FF008B4082 /* ObjectSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSuccessView.swift; sourceTree = "<group>"; };
+		11FE5ECD28BD4272008B4082 /* PrimaryImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryImageView.swift; sourceTree = "<group>"; };
+		11FE5ECF28BD5E87008B4082 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +124,15 @@
 		11FE5E8628BD2FF4008B4082 /* TheMetSearch */ = {
 			isa = PBXGroup;
 			children = (
+				11FE5EB128BD3B1A008B4082 /* Client */,
+				11FE5EBA28BD3CF0008B4082 /* Models */,
+				11FE5EBF28BD3F35008B4082 /* ViewModels */,
+				11FE5EC028BD3F53008B4082 /* Views */,
 				11FE5E8728BD2FF4008B4082 /* TheMetSearchApp.swift */,
 				11FE5E8928BD2FF4008B4082 /* ContentView.swift */,
 				11FE5E8B28BD2FF5008B4082 /* Assets.xcassets */,
 				11FE5E8D28BD2FF5008B4082 /* Preview Content */,
+				1161305828BE65F20064B8F7 /* Constants.swift */,
 			);
 			path = TheMetSearch;
 			sourceTree = "<group>";
@@ -125,6 +160,48 @@
 				11FE5EA428BD2FF6008B4082 /* TheMetSearchUITestsLaunchTests.swift */,
 			);
 			path = TheMetSearchUITests;
+			sourceTree = "<group>";
+		};
+		11FE5EB128BD3B1A008B4082 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				11FE5EB228BD3B37008B4082 /* Client.swift */,
+				11FE5EB428BD3B6A008B4082 /* ClientError.swift */,
+				11FE5EB628BD3BBA008B4082 /* API.swift */,
+				11FE5EB828BD3BEA008B4082 /* LoadingState.swift */,
+				11FE5ECF28BD5E87008B4082 /* ImageCacheManager.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		11FE5EBA28BD3CF0008B4082 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11FE5EBB28BD3D1C008B4082 /* Objects.swift */,
+				11FE5EBD28BD3D3A008B4082 /* Object.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		11FE5EBF28BD3F35008B4082 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				11FE5EC128BD3FBB008B4082 /* SearchViewModel.swift */,
+				11FE5EC328BD406F008B4082 /* ObjectViewModel.swift */,
+				11FE5EC528BD40B2008B4082 /* ImageViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		11FE5EC028BD3F53008B4082 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11FE5EC728BD4162008B4082 /* SearchView.swift */,
+				11FE5EC928BD41AD008B4082 /* ObjectView.swift */,
+				11FE5ECB28BD41FF008B4082 /* ObjectSuccessView.swift */,
+				11FE5ECD28BD4272008B4082 /* PrimaryImageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +334,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FE5EB928BD3BEA008B4082 /* LoadingState.swift in Sources */,
+				1161305928BE65F20064B8F7 /* Constants.swift in Sources */,
 				11FE5E8A28BD2FF4008B4082 /* ContentView.swift in Sources */,
+				11FE5EB528BD3B6A008B4082 /* ClientError.swift in Sources */,
 				11FE5E8828BD2FF4008B4082 /* TheMetSearchApp.swift in Sources */,
+				11FE5ED028BD5E87008B4082 /* ImageCacheManager.swift in Sources */,
+				11FE5EC828BD4162008B4082 /* SearchView.swift in Sources */,
+				11FE5EB328BD3B37008B4082 /* Client.swift in Sources */,
+				11FE5EC428BD406F008B4082 /* ObjectViewModel.swift in Sources */,
+				11FE5EBC28BD3D1C008B4082 /* Objects.swift in Sources */,
+				11FE5EC228BD3FBB008B4082 /* SearchViewModel.swift in Sources */,
+				11FE5EBE28BD3D3A008B4082 /* Object.swift in Sources */,
+				11FE5ECA28BD41AD008B4082 /* ObjectView.swift in Sources */,
+				11FE5ECC28BD41FF008B4082 /* ObjectSuccessView.swift in Sources */,
+				11FE5EC628BD40B2008B4082 /* ImageViewModel.swift in Sources */,
+				11FE5ECE28BD4272008B4082 /* PrimaryImageView.swift in Sources */,
+				11FE5EB728BD3BBA008B4082 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
