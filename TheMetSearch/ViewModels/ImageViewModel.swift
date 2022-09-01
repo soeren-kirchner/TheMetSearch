@@ -14,12 +14,12 @@ class ImageViewModel: ObservableObject {
     
     func fetchImage(from url: URL) async {
         let result = await Client.downloadImage(from: url)
-        DispatchQueue.main.async { [weak self] in
+        await MainActor.run { [weak self] in
             switch result {
             case .success(let image):
                 self?.loadingState = .success(image)
-            case .failure(_):
-                self?.loadingState = .error(.NetworkError)
+            case .failure(let error):
+                self?.loadingState = .error(APIError(clientError: error))
             }
         }
     }

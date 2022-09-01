@@ -12,18 +12,14 @@ class ObjectViewModel: ObservableObject {
     @Published var loadingState: LoadingState<Object> = .loading
     
     func fetch(for id: Int) async {
-        guard let url = API.object(for: id) else {
-            loadingState = .error(.NetworkError)
-            return
-        }
-        let result = await Client.fetchData(for: URLRequest(url: url), of: Object.self)
-        DispatchQueue.main.async { [weak self] in
+        let result = await API.fetchObject(for: id)
+        await MainActor.run { [weak self] in
             switch result {
             case .success(let object):
                 self?.loadingState = .success(object)
             case .failure(let error):
                 print(error)
-                self?.loadingState = .error(.NetworkError)
+                self?.loadingState = .error(error)
             }
         }
     }
