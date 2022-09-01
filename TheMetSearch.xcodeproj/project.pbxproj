@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1161305928BE65F20064B8F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1161305828BE65F20064B8F7 /* Constants.swift */; };
+		11DB163228BFC527004B05AF /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DB163128BFC527004B05AF /* APIError.swift */; };
 		11FE5E8828BD2FF4008B4082 /* TheMetSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5E8728BD2FF4008B4082 /* TheMetSearchApp.swift */; };
 		11FE5E8A28BD2FF4008B4082 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5E8928BD2FF4008B4082 /* ContentView.swift */; };
 		11FE5E8C28BD2FF5008B4082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11FE5E8B28BD2FF5008B4082 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		1161305828BE65F20064B8F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		11DB163128BFC527004B05AF /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		11FE5E8428BD2FF4008B4082 /* TheMetSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMetSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FE5E8728BD2FF4008B4082 /* TheMetSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchApp.swift; sourceTree = "<group>"; };
 		11FE5E8928BD2FF4008B4082 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				11FE5EB228BD3B37008B4082 /* Client.swift */,
 				11FE5EB428BD3B6A008B4082 /* ClientError.swift */,
 				11FE5EB628BD3BBA008B4082 /* API.swift */,
+				11DB163128BFC527004B05AF /* APIError.swift */,
 				11FE5EB828BD3BEA008B4082 /* LoadingState.swift */,
 				11FE5ECF28BD5E87008B4082 /* ImageCacheManager.swift */,
 			);
@@ -351,6 +354,7 @@
 				11FE5EC628BD40B2008B4082 /* ImageViewModel.swift in Sources */,
 				11FE5ECE28BD4272008B4082 /* PrimaryImageView.swift in Sources */,
 				11FE5EB728BD3BBA008B4082 /* API.swift in Sources */,
+				11DB163228BFC527004B05AF /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
