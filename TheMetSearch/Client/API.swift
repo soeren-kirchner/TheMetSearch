@@ -18,9 +18,21 @@ struct API {
         return components?.url
     }
     
-    static func object(for id: Int) -> URL? {
+    private static func object(for id: Int) -> URL? {
         let url = URL(string: "\(objectUrl)/\(String(id))")
         return url
-//        return URL(string: String(id), relativeTo: url)
+    }
+    
+    static func fetchObject(for id: Int) async -> Result<Object, APIError> {
+        guard let url = API.object(for: id) else {
+            return .failure(.InternalError(nil))
+        }
+        let result = await Client.fetchData(for: URLRequest(url: url), of: Object.self)
+        switch result {
+        case .failure(let clientError):
+            return .failure(APIError(clientError: clientError))
+        case .success(let metObject):
+            return .success(metObject)
+        }
     }
 }

@@ -10,33 +10,54 @@ import UIKit
 
 class Client {
     
-    public static func fetchData<Value>(for request: URLRequest, of type: Value.Type) async -> (Result<Value, ClientError>) where Value: Decodable {
+    private static func fetch(request: URLRequest) async -> Result<Data, ClientError> {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                return .failure(.NetworkError)
+            guard let response = response as? HTTPURLResponse else {
+                return .failure(.InternalError("not a HTTPURLResponse"))
             }
-            let result = try JSONDecoder().decode(type, from: data)
-            return .success(result)
+            switch response.statusCode {
+            case 200..<300:
+                return .success(data)
+            case 400..<500:
+                return .failure(.HTTPClientError(response))
+            case 500..<600:
+                return .failure(.HTTPServerError(response))
+            default:
+                return .failure(.InternalError("Unexpected HTTP status code: \(response.statusCode)"))
+            }
         } catch {
-            return .failure(.UnknownError)
+            return .failure(.InternalError(error.localizedDescription))
+        }
+    }
+    
+    public static func fetchData<Value>(for request: URLRequest, of type: Value.Type) async -> Result<Value, ClientError> where Value: Decodable {
+        
+        let result = await fetch(request: request)
+        switch result {
+        case .failure(let error):
+            return .failure(error)
+        case .success(let data):
+            do {
+                let decodedJSON = try JSONDecoder().decode(type, from: data)
+                return .success(decodedJSON)
+            } catch let error as DecodingError {
+                return .failure(.DecodingError(error))
+            } catch {
+                return .failure(.InternalError(error.localizedDescription))
+            }
         }
     }
     
     public static func downloadImage(from url: URL) async -> Result<UIImage, ClientError> {
         if let image = ImageCacheManager.instance.get(url: url) { return .success(image) }
-        do {
-            let (data, response) = try await URLSession.shared.data(from: url)
-            guard let response = response as? HTTPURLResponse,
-                    response.statusCode == 200,
-                  let image = UIImage(data: data)
-            else {
-                return .failure(.NetworkError)
-            }
-            ImageCacheManager.instance.add(image: image, for: url, until: getExpireDate(response: response))
-            return .success(image)
-        } catch  {
-            return .failure(.UnknownError)
+        let result = await fetch(request: URLRequest(url: url))
+        switch result {
+        case .success(let data):
+            guard let newImage = UIImage(data: data) else { return .failure(.InternalError("Image data corrupted")) }
+            return .success(newImage)
+        case .failure(let error):
+            return .failure(error)
         }
     }
     
@@ -54,5 +75,4 @@ class Client {
         
         return min(Date(timeIntervalSinceNow: maxAge), defaultDate)
     }
-    
 }

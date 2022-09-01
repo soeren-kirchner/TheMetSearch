@@ -10,5 +10,5 @@ import Foundation
 enum LoadingState<Value> {
     case loading
     case success(Value)
-    case error(ClientError)
+    case error(APIError)
 }

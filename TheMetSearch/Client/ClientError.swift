@@ -8,6 +8,8 @@
 import Foundation
 
 enum ClientError: Error {
-    case NetworkError
-    case UnknownError
+    case HTTPClientError(HTTPURLResponse)
+    case HTTPServerError(HTTPURLResponse)
+    case DecodingError(DecodingError)
+    case InternalError(String)
 }
