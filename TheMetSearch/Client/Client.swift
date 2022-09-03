@@ -10,7 +10,12 @@ import UIKit
 
 class Client {
     
-    private static func fetch(request: URLRequest) async -> Result<Data, ClientError> {
+    struct ClientResult {
+        let data: Data
+        let respone: HTTPURLResponse
+    }
+    
+    private static func fetch(request: URLRequest) async -> Result<ClientResult, ClientError> {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let response = response as? HTTPURLResponse else {
@@ -18,7 +23,7 @@ class Client {
             }
             switch response.statusCode {
             case 200..<300:
-                return .success(data)
+                return .success(ClientResult(data: data, respone: response))
             case 400..<500:
                 return .failure(.HTTPClientError(response))
             case 500..<600:
@@ -37,9 +42,9 @@ class Client {
         switch result {
         case .failure(let error):
             return .failure(error)
-        case .success(let data):
+        case .success(let clientResult):
             do {
-                let decodedJSON = try JSONDecoder().decode(type, from: data)
+                let decodedJSON = try JSONDecoder().decode(type, from: clientResult.data)
                 return .success(decodedJSON)
             } catch let error as DecodingError {
                 return .failure(.DecodingError(error))
@@ -53,8 +58,10 @@ class Client {
         if let image = ImageCacheManager.instance.get(url: url) { return .success(image) }
         let result = await fetch(request: URLRequest(url: url))
         switch result {
-        case .success(let data):
-            guard let newImage = UIImage(data: data) else { return .failure(.InternalError("Image data corrupted")) }
+        case .success(let clientResult):
+            guard let newImage = UIImage(data: clientResult.data) else { return .failure(.InternalError("Image data corrupted")) }
+            let expirationDate = getExpireDate(response: clientResult.respone)
+            ImageCacheManager.instance.add(image: newImage, for: url, until: expirationDate)
             return .success(newImage)
         case .failure(let error):
             return .failure(error)
