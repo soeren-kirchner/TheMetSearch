@@ -12,7 +12,13 @@ class ImageViewModel: ObservableObject {
    
     @Published var loadingState: LoadingState<UIImage> = .loading
     
-    func fetchImage(from url: URL) async {
+    func fetchImage(from url: URL?) async {
+        guard let url = url else {
+            await MainActor.run { [weak self] in
+                self?.loadingState = .error(APIError.NotFound)
+            }
+            return
+        }
         let result = await Client.downloadImage(from: url)
         await MainActor.run { [weak self] in
             switch result {
