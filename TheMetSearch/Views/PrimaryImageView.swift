@@ -11,6 +11,7 @@ struct PrimaryImageView: View {
     
     @StateObject private var imageViewModel = ImageViewModel()
     let url: URL
+    let maxHeight = 400.0
         
     var body: some View {
         VStack {
@@ -18,15 +19,15 @@ struct PrimaryImageView: View {
             case .loading:
                 ProgressView()
                     .scaleEffect(2)
-                    .frame(height: 350)
+                    .frame(height: maxHeight)
             case .error(_):
                 EmptyView()
-                    .frame(height: 350)
+                    .frame(height: maxHeight)
             case .success(let image):
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
-                    .frame(idealHeight: min(350, 350*image.size.height/image.size.width))
+                    .frame(height: min(maxHeight, maxHeight*image.size.height/image.size.width))
             }
         }
         .task {
