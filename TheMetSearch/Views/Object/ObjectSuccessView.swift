@@ -11,12 +11,16 @@ struct ObjectSuccessView: View {
     
     let object: Object
     
+    @State var selectedImage: String? = nil
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
                 headerImage
                 objectHeader
                 objectDetails
+                gallery
+                    .padding(.bottom, 50)
             }
             .padding(.horizontal)
         }
@@ -25,9 +29,7 @@ struct ObjectSuccessView: View {
     var headerImage: some View {
         HStack {
             Spacer()
-            if let url = URL(string: object.primaryImageSmall) {
-                PrimaryImageView(url: url)
-            }
+            PrimaryImageView(url: URL(string: object.primaryImageSmall))
             Spacer()
         }
     }
@@ -47,6 +49,18 @@ struct ObjectSuccessView: View {
         VStack(alignment: .leading, spacing: 16) {
             ForEach(cleanedDetails, id: \.self) { labelFieldPair in
                 line(labelFieldPair[0], labelFieldPair[1])
+            }
+        }
+    }
+    
+    var gallery: some View {
+        VStack(alignment: .leading) {
+            if !object.additionalImages.isEmpty {
+                Text("Additional Images")
+                    .font(.system(size: 14))
+                    .fontWeight(.light)
+                    .textCase(.uppercase)
+                GalleryView(images: object.additionalImages, selectedImage: $selectedImage)
             }
         }
     }
