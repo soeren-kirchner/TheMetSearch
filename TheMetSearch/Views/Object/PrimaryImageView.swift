@@ -10,7 +10,7 @@ import SwiftUI
 struct PrimaryImageView: View {
     
     @StateObject private var imageViewModel = ImageViewModel()
-    let url: URL
+    let url: URL?
     let maxHeight = 400.0
         
     var body: some View {
@@ -21,8 +21,8 @@ struct PrimaryImageView: View {
                     .scaleEffect(2)
                     .frame(height: maxHeight)
             case .error(_):
-                EmptyView()
-                    .frame(height: maxHeight)
+                ImageErrorView(height: 160)
+                
             case .success(let image):
                 Image(uiImage: image)
                     .resizable()
