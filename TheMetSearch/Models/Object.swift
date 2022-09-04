@@ -20,7 +20,6 @@ struct Object: Decodable {
     let primaryImage: String
     let primaryImageSmall: String
     let additionalImages: [String]
-  
 }
 
 extension Object {
