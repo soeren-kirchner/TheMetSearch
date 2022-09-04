@@ -26,6 +26,7 @@ struct ObjectView: View {
         .task {
             await objectViewModel.fetch(for: objectID)
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
