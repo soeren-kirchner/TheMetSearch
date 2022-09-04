@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1155C73928C276220039D22F /* SearchViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1155C73828C276220039D22F /* SearchViewListCell.swift */; };
 		1161305928BE65F20064B8F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1161305828BE65F20064B8F7 /* Constants.swift */; };
 		11DB163228BFC527004B05AF /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DB163128BFC527004B05AF /* APIError.swift */; };
 		11FE5E8828BD2FF4008B4082 /* TheMetSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5E8728BD2FF4008B4082 /* TheMetSearchApp.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1155C73828C276220039D22F /* SearchViewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewListCell.swift; sourceTree = "<group>"; };
 		1161305828BE65F20064B8F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		11DB163128BFC527004B05AF /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		11FE5E8428BD2FF4008B4082 /* TheMetSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMetSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1155C73728C275EF0039D22F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				11FE5EC728BD4162008B4082 /* SearchView.swift */,
+				1155C73828C276220039D22F /* SearchViewListCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		11FE5E7B28BD2FF3008B4082 = {
 			isa = PBXGroup;
 			children = (
@@ -199,7 +210,7 @@
 		11FE5EC028BD3F53008B4082 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				11FE5EC728BD4162008B4082 /* SearchView.swift */,
+				1155C73728C275EF0039D22F /* Search */,
 				11FE5EC928BD41AD008B4082 /* ObjectView.swift */,
 				11FE5ECB28BD41FF008B4082 /* ObjectSuccessView.swift */,
 				11FE5ECD28BD4272008B4082 /* PrimaryImageView.swift */,
@@ -346,6 +357,7 @@
 				11FE5EC828BD4162008B4082 /* SearchView.swift in Sources */,
 				11FE5EB328BD3B37008B4082 /* Client.swift in Sources */,
 				11FE5EC428BD406F008B4082 /* ObjectViewModel.swift in Sources */,
+				1155C73928C276220039D22F /* SearchViewListCell.swift in Sources */,
 				11FE5EBC28BD3D1C008B4082 /* Objects.swift in Sources */,
 				11FE5EC228BD3FBB008B4082 /* SearchViewModel.swift in Sources */,
 				11FE5EBE28BD3D3A008B4082 /* Object.swift in Sources */,
@@ -519,6 +531,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -548,6 +561,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
