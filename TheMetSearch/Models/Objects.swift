@@ -9,5 +9,5 @@ import Foundation
 
 struct Objects: Decodable, Hashable {
     let total: Int
-    let objectIDs: [Int]
+    let objectIDs: [Int]?
 }
