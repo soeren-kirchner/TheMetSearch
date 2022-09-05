@@ -47,16 +47,19 @@ struct SearchView: View {
                 .opacity(0.5)
                 .padding(.leading, 5)
             
-            TextField("Enter your Keyword", text: $searchViewModel.searchText)
-                .tint(.green)
-                .tint(.searchFieldBorder)
-                .disableAutocorrection(true)
-                .onReceive(searchViewModel.$searchText
-                    .debounce(for: 0.5, scheduler: RunLoop.main)) { _ in
-                        print("received")
-                        searchViewModel.search()
-                    }
-            if searchViewModel.searchState == .searching {
+            ZStack(alignment: .leading) {
+                Text("Placeholder")
+                    .foregroundColor(.searchFieldPlaceholder)
+                    .opacity(searchViewModel.searchText.isEmpty ? 1 : 0)
+                TextField("", text: $searchViewModel.searchText)
+                    .disableAutocorrection(true)
+                    .onReceive(searchViewModel.$searchText
+                        .debounce(for: 0.5, scheduler: RunLoop.main)) { _ in
+                            print("received")
+                            searchViewModel.search()
+                        }
+            }
+            if case .searching = searchViewModel.searchState {
                 ProgressView().tint(.gray)
             }
         }
@@ -71,23 +74,36 @@ struct SearchView: View {
     }
     
     var resultArea: some View {
-        ScrollView {
-            LazyVStack(spacing: 14) {
-                ForEach(searchViewModel.objects.objectIDs, id: \.self) { objectId in
-                    NavigationLink {
-                        ObjectView(objectID: objectId)
-                    } label: {
-                        SearchViewListCell(objectId: objectId)
+        ScrollView  {
+            switch searchViewModel.searchState {
+            case .success, .searching:
+                LazyVStack(spacing: 14) {
+                    if let objectsIDs = searchViewModel.objects.objectIDs {
+                        ForEach(objectsIDs, id: \.self) { objectId in
+                            NavigationLink {
+                                ObjectView(objectID: objectId)
+                            } label: {
+                                SearchViewListCell(objectId: objectId)
+                            }
+                        }
+                    } else {
+                        Text("No result")
                     }
                 }
+                .padding(20)
+            case .toFewCharacters:
+                Text("Please type at least \(TheMetDefaults.minimumInputCharachters) Characters in the Searchfield to perform a search.")
+                    .padding(50)
+                    .opacity(0.5)
+            case .error(let error):
+                ErrorView(apiError: error)
+                    .padding(50)
             }
-            .padding(20)
         }
         .padding(-20)
         .padding(.top, 30)
         .navigationBarTitleDisplayMode(.inline)
     }
-    
 }
 
 struct SearchView_Previews: PreviewProvider {
