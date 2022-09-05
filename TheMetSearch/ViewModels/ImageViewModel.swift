@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class ImageViewModel: ObservableObject {
    
@@ -23,7 +24,9 @@ class ImageViewModel: ObservableObject {
         await MainActor.run { [weak self] in
             switch result {
             case .success(let image):
-                self?.loadingState = .success(image)
+                withAnimation {
+                    self?.loadingState = .success(image)
+                }
             case .failure(let error):
                 self?.loadingState = .error(APIError(clientError: error))
             }
