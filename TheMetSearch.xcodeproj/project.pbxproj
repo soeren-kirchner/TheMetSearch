@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1155C73928C276220039D22F /* SearchViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1155C73828C276220039D22F /* SearchViewListCell.swift */; };
 		1161305928BE65F20064B8F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1161305828BE65F20064B8F7 /* Constants.swift */; };
+		116223BA28C67BC600946208 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116223B928C67BC600946208 /* ErrorView.swift */; };
+		116223BC28C6819A00946208 /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116223BB28C6819A00946208 /* NetworkMonitorManager.swift */; };
 		11DB163228BFC527004B05AF /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DB163128BFC527004B05AF /* APIError.swift */; };
 		11E8B6FA28C51E94000FF062 /* ImageErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E8B6F928C51E94000FF062 /* ImageErrorView.swift */; };
 		11E8B6FD28C5278C000FF062 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E8B6FC28C5278C000FF062 /* GalleryView.swift */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		1155C73828C276220039D22F /* SearchViewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewListCell.swift; sourceTree = "<group>"; };
 		1161305828BE65F20064B8F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		116223B928C67BC600946208 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		116223BB28C6819A00946208 /* NetworkMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManager.swift; sourceTree = "<group>"; };
 		11DB163128BFC527004B05AF /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		11E8B6F928C51E94000FF062 /* ImageErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageErrorView.swift; sourceTree = "<group>"; };
 		11E8B6FC28C5278C000FF062 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				11E8B6F928C51E94000FF062 /* ImageErrorView.swift */,
+				116223B928C67BC600946208 /* ErrorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 				11DB163128BFC527004B05AF /* APIError.swift */,
 				11FE5EB828BD3BEA008B4082 /* LoadingState.swift */,
 				11FE5ECF28BD5E87008B4082 /* ImageCacheManager.swift */,
+				116223BB28C6819A00946208 /* NetworkMonitorManager.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 				11FE5E8828BD2FF4008B4082 /* TheMetSearchApp.swift in Sources */,
 				11E8B6FF28C52973000FF062 /* GalleryImageView.swift in Sources */,
 				11FE5ED028BD5E87008B4082 /* ImageCacheManager.swift in Sources */,
+				116223BA28C67BC600946208 /* ErrorView.swift in Sources */,
 				11FE5EC828BD4162008B4082 /* SearchView.swift in Sources */,
 				11E8B6FD28C5278C000FF062 /* GalleryView.swift in Sources */,
 				11E8B6FA28C51E94000FF062 /* ImageErrorView.swift in Sources */,
@@ -399,6 +406,7 @@
 				11FE5ECE28BD4272008B4082 /* PrimaryImageView.swift in Sources */,
 				11FE5EB728BD3BBA008B4082 /* API.swift in Sources */,
 				11DB163228BFC527004B05AF /* APIError.swift in Sources */,
+				116223BC28C6819A00946208 /* NetworkMonitorManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
