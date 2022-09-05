@@ -12,7 +12,7 @@ struct API {
     private static let searchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search"
     private static let objectUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     
-    static func search(for keyword: String) -> URL? {
+    private static func search(for keyword: String) -> URL? {
         var components = URLComponents(string: searchUrl)
         components?.queryItems = [URLQueryItem(name: "q", value: keyword)]
         return components?.url
@@ -22,17 +22,33 @@ struct API {
         let url = URL(string: "\(objectUrl)/\(String(id))")
         return url
     }
+
+    private static func fetchData<Value>(from url: URL, of type: Value.Type) async -> Result<Value, APIError> where Value: Decodable {
+        return await Client.fetchData(for: URLRequest(url: url), of: type)
+            .flatMapError { clientError in
+                    .failure(APIError(clientError: clientError))
+            }
+    }
     
+    static func fetchObjects(for keyword: String) async -> Result<Objects, APIError> {
+        guard let url = API.search(for: keyword) else {
+            return .failure(.InternalError(nil))
+        }
+        return await fetchData(from: url, of: Objects.self)
+//        return await Client.fetchData(for: URLRequest(url: url), of: Objects.self)
+//            .flatMapError { clientError in
+//                    .failure(APIError(clientError: clientError))
+//            }
+    }
+
     static func fetchObject(for id: Int) async -> Result<Object, APIError> {
         guard let url = API.object(for: id) else {
             return .failure(.InternalError(nil))
         }
-        let result = await Client.fetchData(for: URLRequest(url: url), of: Object.self)
-        switch result {
-        case .failure(let clientError):
-            return .failure(APIError(clientError: clientError))
-        case .success(let metObject):
-            return .success(metObject)
-        }
+        return await fetchData(from: url, of: Object.self)
+//        return await Client.fetchData(for: URLRequest(url: url), of: Object.self)
+//            .flatMapError { clientError in
+//                    .failure(APIError(clientError: clientError))
+//            }
     }
 }
