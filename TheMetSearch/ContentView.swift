@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var networkMonitorManager = NetworkMonitorManager()
+    
     var body: some View {
-        SearchView()
+        ZStack {
+            switch networkMonitorManager.connection {
+            case .satisfied:
+                SearchView()
+            default:
+                Text("No Connection")
+            }
+        }
+        .task {
+            networkMonitorManager.activate()
+        }
     }
 }
 
