@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ObjectSuccessView: View {
     
-    let object: Object
+    let object: MetObject
     
     @State var selectedImage: String? = nil
     

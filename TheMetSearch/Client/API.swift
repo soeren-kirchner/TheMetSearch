@@ -30,23 +30,23 @@ struct API {
             }
     }
     
-    static func fetchObjects(for keyword: String) async -> Result<Objects, APIError> {
+    static func fetchObjects(for keyword: String) async -> Result<MetObjects, APIError> {
         guard let url = API.search(for: keyword) else {
             return .failure(.InternalError(nil))
         }
-        return await fetchData(from: url, of: Objects.self)
+        return await fetchData(from: url, of: MetObjects.self)
 //        return await Client.fetchData(for: URLRequest(url: url), of: Objects.self)
 //            .flatMapError { clientError in
 //                    .failure(APIError(clientError: clientError))
 //            }
     }
 
-    static func fetchObject(for id: Int) async -> Result<Object, APIError> {
+    static func fetchObject(for id: Int) async -> Result<MetObject, APIError> {
         guard let url = API.object(for: id) else {
             return .failure(.InternalError(nil))
         }
-        return await fetchData(from: url, of: Object.self)
-//        return await Client.fetchData(for: URLRequest(url: url), of: Object.self)
+        return await fetchData(from: url, of: MetObject.self)
+//        return await Client.fetchData(for: URLRequest(url: url), of: MetObject.self)
 //            .flatMapError { clientError in
 //                    .failure(APIError(clientError: clientError))
 //            }

@@ -9,7 +9,7 @@ import Foundation
 
 class SearchViewModel: ObservableObject {
     
-    @Published var objects = Objects(total: 0, objectIDs: [])
+    @Published var objects = MetObjects(total: 0, objectIDs: [])
     @Published var searchText = ""
     @Published var searchState: SearchState = .toFewCharacters
     

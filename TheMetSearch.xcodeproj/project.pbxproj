@@ -27,8 +27,8 @@
 		11FE5EB528BD3B6A008B4082 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB428BD3B6A008B4082 /* ClientError.swift */; };
 		11FE5EB728BD3BBA008B4082 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB628BD3BBA008B4082 /* API.swift */; };
 		11FE5EB928BD3BEA008B4082 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB828BD3BEA008B4082 /* LoadingState.swift */; };
-		11FE5EBC28BD3D1C008B4082 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EBB28BD3D1C008B4082 /* Objects.swift */; };
-		11FE5EBE28BD3D3A008B4082 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EBD28BD3D3A008B4082 /* Object.swift */; };
+		11FE5EBC28BD3D1C008B4082 /* MetObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EBB28BD3D1C008B4082 /* MetObjects.swift */; };
+		11FE5EBE28BD3D3A008B4082 /* MetObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EBD28BD3D3A008B4082 /* MetObject.swift */; };
 		11FE5EC228BD3FBB008B4082 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EC128BD3FBB008B4082 /* SearchViewModel.swift */; };
 		11FE5EC428BD406F008B4082 /* ObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EC328BD406F008B4082 /* ObjectViewModel.swift */; };
 		11FE5EC628BD40B2008B4082 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EC528BD40B2008B4082 /* ImageViewModel.swift */; };
@@ -80,8 +80,8 @@
 		11FE5EB428BD3B6A008B4082 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		11FE5EB628BD3BBA008B4082 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		11FE5EB828BD3BEA008B4082 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
-		11FE5EBB28BD3D1C008B4082 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
-		11FE5EBD28BD3D3A008B4082 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		11FE5EBB28BD3D1C008B4082 /* MetObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetObjects.swift; sourceTree = "<group>"; };
+		11FE5EBD28BD3D3A008B4082 /* MetObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetObject.swift; sourceTree = "<group>"; };
 		11FE5EC128BD3FBB008B4082 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		11FE5EC328BD406F008B4082 /* ObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewModel.swift; sourceTree = "<group>"; };
 		11FE5EC528BD40B2008B4082 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
@@ -226,8 +226,8 @@
 		11FE5EBA28BD3CF0008B4082 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				11FE5EBB28BD3D1C008B4082 /* Objects.swift */,
-				11FE5EBD28BD3D3A008B4082 /* Object.swift */,
+				11FE5EBB28BD3D1C008B4082 /* MetObjects.swift */,
+				11FE5EBD28BD3D3A008B4082 /* MetObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -397,9 +397,9 @@
 				11FE5EB328BD3B37008B4082 /* Client.swift in Sources */,
 				11FE5EC428BD406F008B4082 /* ObjectViewModel.swift in Sources */,
 				1155C73928C276220039D22F /* SearchViewListCell.swift in Sources */,
-				11FE5EBC28BD3D1C008B4082 /* Objects.swift in Sources */,
+				11FE5EBC28BD3D1C008B4082 /* MetObjects.swift in Sources */,
 				11FE5EC228BD3FBB008B4082 /* SearchViewModel.swift in Sources */,
-				11FE5EBE28BD3D3A008B4082 /* Object.swift in Sources */,
+				11FE5EBE28BD3D3A008B4082 /* MetObject.swift in Sources */,
 				11FE5ECA28BD41AD008B4082 /* ObjectView.swift in Sources */,
 				11FE5ECC28BD41FF008B4082 /* ObjectSuccessView.swift in Sources */,
 				11FE5EC628BD40B2008B4082 /* ImageViewModel.swift in Sources */,

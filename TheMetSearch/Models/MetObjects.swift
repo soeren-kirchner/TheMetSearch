@@ -1,5 +1,5 @@
 //
-//  Objects.swift
+//  MetObjects.swift
 //  TheMetSearch
 //
 //  Created by Sören Kirchner on 29.08.22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Objects: Decodable, Hashable {
+struct MetObjects: Decodable, Hashable {
     let total: Int
     let objectIDs: [Int]?
 }

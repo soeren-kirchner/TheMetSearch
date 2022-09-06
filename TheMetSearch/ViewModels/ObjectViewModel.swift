@@ -9,7 +9,7 @@ import Foundation
 
 class ObjectViewModel: ObservableObject {
     
-    @Published var loadingState: LoadingState<Object> = .loading
+    @Published var loadingState: LoadingState<MetObject> = .loading
     
     func fetch(for id: Int) async {
         let result = await API.fetchObject(for: id)
