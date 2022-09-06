@@ -8,10 +8,6 @@
 import Foundation
 import SwiftUI
 
-//extension TimeInterval {
-//    static let cacheDefaultMaxAge: TimeInterval = 24 * 60 * 60
-//}
-
 enum TheMetDefaults {
     static let minimumInputCharachters = 3
     enum ImageCache {
