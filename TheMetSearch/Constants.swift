@@ -22,12 +22,11 @@ enum TheMetDefaults {
 }
 
 extension Color {
-    static let background = Color("background")
-    static let searchFieldBackground = Color("searchFieldBackground")
-    static let searchFieldBorder = Color("searchFieldBorder")
-    static let searchFieldForeground = Color("searchFieldForeground")
-    static let searchFieldPlaceholder = Color("searchFieldPlaceholder")
-    static let listCellBackground = Color("listCellBackground")
-    static let listCellForeground = Color("listCellForeground")
-    
+    static let background = Color("Background")
+    static let searchFieldBackground = Color("SearchFieldBackground")
+    static let searchFieldBorder = Color("SearchFieldBorder")
+    static let searchFieldForeground = Color("SearchFieldForeground")
+    static let searchFieldPlaceholder = Color("SearchFieldPlaceholder")
+    static let listCellBackground = Color("ListCellBackground")
+    static let listCellForeground = Color("ListCellForeground")
 }
