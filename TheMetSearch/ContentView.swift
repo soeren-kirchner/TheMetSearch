@@ -18,7 +18,14 @@ struct ContentView: View {
             case .satisfied:
                 SearchView(api: api)
             default:
-                Text("No Connection")
+                VStack(spacing: 20) {
+                    Text("Search The Met")
+                    Text("\(Image(systemName: "wifi.exclamationmark"))")
+                        .font(.largeTitle)
+                    Text("No Connection")
+                        .font(.title)
+                    Text("Please check your internet connection.")
+                }
             }
         }
         .task {
@@ -27,8 +34,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
