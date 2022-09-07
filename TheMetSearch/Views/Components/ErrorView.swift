@@ -24,7 +24,7 @@ struct ErrorView: View {
         }
     }
     
-    func errorLine(message: String, underlyingError: ClientError? = nil) -> some View {
+    func errorLine(message: String, underlyingError: Error? = nil) -> some View {
         VStack {
             Text("\(message)")
             #if DEBUG
