@@ -19,7 +19,7 @@ class Client {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let response = response as? HTTPURLResponse else {
-                return .failure(.InternalError("not a HTTPURLResponse"))
+                return .failure(.InternalError(GenericError(message: "not a HTTPURLResponse")))
             }
             switch response.statusCode {
             case 200..<300:
@@ -29,10 +29,10 @@ class Client {
             case 500..<600:
                 return .failure(.HTTPServerError(response))
             default:
-                return .failure(.InternalError("Unexpected HTTP status code: \(response.statusCode)"))
+                return .failure(.InternalError(GenericError(message: "Unexpected HTTP status code: \(response.statusCode)")))
             }
         } catch {
-            return .failure(.InternalError(error.localizedDescription))
+            return .failure(.InternalError(GenericError(message: error.localizedDescription)))
         }
     }
     
@@ -49,7 +49,7 @@ class Client {
             } catch let error as DecodingError {
                 return .failure(.DecodingError(error))
             } catch {
-                return .failure(.InternalError(error.localizedDescription))
+                return .failure(.InternalError(GenericError(message: error.localizedDescription)))
             }
         }
     }
@@ -59,7 +59,7 @@ class Client {
         let result = await fetch(request: URLRequest(url: url))
         switch result {
         case .success(let clientResult):
-            guard let newImage = UIImage(data: clientResult.data) else { return .failure(.InternalError("Image data corrupted")) }
+            guard let newImage = UIImage(data: clientResult.data) else { return .failure(.InternalError(GenericError(message: "Image data corrupted"))) }
             let expirationDate = getExpireDate(response: clientResult.respone)
             ImageCacheManager.instance.add(image: newImage, for: url, until: expirationDate)
             return .success(newImage)
@@ -68,7 +68,7 @@ class Client {
         }
     }
     
-    private static func getExpireDate(response: HTTPURLResponse) -> Date {
+    public static func getExpireDate(response: HTTPURLResponse) -> Date {
         let defaultDate = Date(timeIntervalSinceNow: TheMetDefaults.ImageCache.maxAge)
         guard
             let cacheControl = response.value(forHTTPHeaderField: "Cache-Control"),
@@ -78,7 +78,6 @@ class Client {
             .trimmingCharacters(in: .whitespaces),
             let maxAge = TimeInterval(maxAgeValue)
         else { return defaultDate }
-        print(maxAge)
         
         return min(Date(timeIntervalSinceNow: maxAge), defaultDate)
     }

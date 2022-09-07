@@ -9,9 +9,9 @@ import Foundation
 
 enum APIError: Error {
     case NotFound
-    case NetworkError(ClientError?)
-    case TemporaryError(ClientError?)
-    case InternalError(ClientError?)
+    case NetworkError(Error)
+    case TemporaryError(Error)
+    case InternalError(Error)
     
     init(clientError: ClientError) {
         switch clientError {

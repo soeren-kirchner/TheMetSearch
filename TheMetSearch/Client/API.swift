@@ -9,17 +9,17 @@ import Foundation
 
 struct API {
     
-    private static let searchUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search"
-    private static let objectUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
+    private static let searchBaseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search"
+    private static let objectBaseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     
-    private static func search(for keyword: String) -> URL? {
-        var components = URLComponents(string: searchUrl)
+    private static func searchUrl(for keyword: String) -> URL? {
+        var components = URLComponents(string: searchBaseUrl)
         components?.queryItems = [URLQueryItem(name: "q", value: keyword)]
         return components?.url
     }
     
-    private static func object(for id: Int) -> URL? {
-        let url = URL(string: "\(objectUrl)/\(String(id))")
+    private static func objectUrl(for id: Int) -> URL? {
+        let url = URL(string: "\(objectBaseUrl)/\(String(id))")
         return url
     }
 
@@ -31,24 +31,16 @@ struct API {
     }
     
     static func fetchObjects(for keyword: String) async -> Result<MetObjects, APIError> {
-        guard let url = API.search(for: keyword) else {
-            return .failure(.InternalError(nil))
+        guard let url = API.searchUrl(for: keyword) else {
+            return .failure(.InternalError(GenericError(message: "Could not construct url for keyword \(keyword)")))
         }
         return await fetchData(from: url, of: MetObjects.self)
-//        return await Client.fetchData(for: URLRequest(url: url), of: Objects.self)
-//            .flatMapError { clientError in
-//                    .failure(APIError(clientError: clientError))
-//            }
     }
 
     static func fetchObject(for id: Int) async -> Result<MetObject, APIError> {
-        guard let url = API.object(for: id) else {
-            return .failure(.InternalError(nil))
+        guard let url = API.objectUrl(for: id) else {
+            return .failure(.InternalError(GenericError(message: "Could not construct url for keyword \(id)")))
         }
         return await fetchData(from: url, of: MetObject.self)
-//        return await Client.fetchData(for: URLRequest(url: url), of: MetObject.self)
-//            .flatMapError { clientError in
-//                    .failure(APIError(clientError: clientError))
-//            }
     }
 }

@@ -11,5 +11,9 @@ enum ClientError: Error {
     case HTTPClientError(HTTPURLResponse)
     case HTTPServerError(HTTPURLResponse)
     case DecodingError(DecodingError)
-    case InternalError(String)
+    case InternalError(GenericError)
+}
+
+struct GenericError: Error {
+    let message: String
 }
