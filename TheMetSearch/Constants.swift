@@ -26,3 +26,7 @@ extension Color {
     static let listCellBackground = Color("ListCellBackground")
     static let listCellForeground = Color("ListCellForeground")
 }
+
+extension Image {
+    static let background = Image("Background")
+}
