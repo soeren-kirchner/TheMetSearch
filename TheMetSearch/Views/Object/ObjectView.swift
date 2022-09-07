@@ -21,7 +21,11 @@ struct ObjectView: View {
         VStack {
             switch objectViewModel.loadingState {
             case .loading:
-                ProgressView()
+                Color.clear
+                    .overlay{
+                        ProgressView()
+                            .scaleEffect(1.5)
+                    }
             case .success(let object):
                 ObjectSuccessView(api: objectViewModel.api, object: object)
             case .error(let error):
