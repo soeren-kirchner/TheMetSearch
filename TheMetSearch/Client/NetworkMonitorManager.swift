@@ -10,7 +10,7 @@ import Network
 
 class NetworkMonitorManager: ObservableObject {
     
-    @Published var connection: NWPath.Status = .requiresConnection
+    @Published var connection: NWPath.Status = .satisfied
     private let monitor = NWPathMonitor()
     
     private func updateHandler(path: NWPath) {
