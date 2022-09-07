@@ -23,7 +23,7 @@ struct GalleryImageView: View {
             case .loading:
                 ProgressView()
             case .error(_):
-                ImageErrorView(height: 160)
+                ImageErrorView(height: 80)
             case .success(let image):
                 Image(uiImage: image)
                     .resizable()
