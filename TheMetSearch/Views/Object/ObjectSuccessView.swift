@@ -15,15 +15,20 @@ struct ObjectSuccessView: View {
     @State var selectedImage: String? = nil
    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 30) {
-                headerImage
-                objectHeader
-                objectDetails
-                gallery
-                    .padding(.bottom, 50)
+        ZStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 30) {
+                    headerImage
+                    objectHeader
+                    objectDetails
+                    gallery
+                        .padding(.bottom, 50)
+                }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
+            if let selectedImage = selectedImage {
+                imageDetail(selectedImage: selectedImage)
+            }
         }
     }
     
@@ -90,6 +95,18 @@ struct ObjectSuccessView: View {
             ["Medium", object.medium],
             ["Dimensions", object.dimensions]
         ].filter{ !$0[1].isEmpty }
+    }
+    
+    func imageDetail(selectedImage: String) -> some View {
+        Color.background
+            .ignoresSafeArea()
+            .overlay {
+                GalleryImageView(api: api, url: URL(string: selectedImage) )
+            }
+            .transition(.opacity)
+            .onTapGesture {
+                self.selectedImage = nil
+            }
     }
 }
 
