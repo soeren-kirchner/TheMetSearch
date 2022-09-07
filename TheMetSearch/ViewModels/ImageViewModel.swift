@@ -12,6 +12,11 @@ import SwiftUI
 class ImageViewModel: ObservableObject {
    
     @Published var loadingState: LoadingState<UIImage> = .loading
+    let api: API
+    
+    init(api: API)  {
+        self.api = api
+    }
     
     func fetchImage(from url: URL?) async {
         guard let url = url else {
@@ -20,7 +25,7 @@ class ImageViewModel: ObservableObject {
             }
             return
         }
-        let result = await Client.downloadImage(from: url)
+        let result = await api.downloadImage(from: url)
         await MainActor.run { [weak self] in
             switch result {
             case .success(let image):

@@ -10,12 +10,13 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var networkMonitorManager = NetworkMonitorManager()
+    let api: API
     
     var body: some View {
         ZStack {
             switch networkMonitorManager.connection {
             case .satisfied:
-                SearchView()
+                SearchView(api: api)
             default:
                 Text("No Connection")
             }

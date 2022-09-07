@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ObjectSuccessView: View {
     
+    let api: API
     let object: MetObject
     
     @State var selectedImage: String? = nil
-    
+   
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
@@ -29,7 +30,10 @@ struct ObjectSuccessView: View {
     var headerImage: some View {
         HStack {
             Spacer()
-            PrimaryImageView(url: URL(string: object.primaryImageSmall))
+            PrimaryImageView(api: api, url: URL(string: object.primaryImageSmall))
+                .onTapGesture {
+                    self.selectedImage = object.primaryImageSmall
+                }
             Spacer()
         }
     }
@@ -60,7 +64,7 @@ struct ObjectSuccessView: View {
                     .font(.system(size: 14))
                     .fontWeight(.light)
                     .textCase(.uppercase)
-                GalleryView(images: object.additionalImages, selectedImage: $selectedImage)
+                GalleryView(api: api, images: object.additionalImages, selectedImage: $selectedImage)
             }
         }
     }
@@ -90,10 +94,13 @@ struct ObjectSuccessView: View {
 }
 
 struct ObjectSuccessView_Previews: PreviewProvider {
+    
+    static let api = API()
+    
     static var previews: some View {
         Group {
-            ObjectSuccessView(object: .example2)
-            ObjectSuccessView(object: .example)
+            ObjectSuccessView(api: api, object: .example2)
+            ObjectSuccessView(api: api, object: .example)
                 .preferredColorScheme(.dark)
         }
     }

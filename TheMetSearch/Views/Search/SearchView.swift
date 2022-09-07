@@ -9,7 +9,13 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @StateObject var searchViewModel = SearchViewModel()
+    @StateObject var searchViewModel: SearchViewModel
+    @State var test: Bool = true
+    @State var test2: Bool = true
+    
+    init (api: API) {
+        self._searchViewModel = StateObject(wrappedValue: SearchViewModel(api: api))
+    }
     
     var body: some View {
         NavigationView {
@@ -81,7 +87,7 @@ struct SearchView: View {
                     if let objectsIDs = searchViewModel.objects.objectIDs {
                         ForEach(objectsIDs, id: \.self) { objectId in
                             NavigationLink {
-                                ObjectView(objectID: objectId)
+                                ObjectView(api: searchViewModel.api, objectID: objectId)
                             } label: {
                                 SearchViewListCell(objectId: objectId)
                             }
@@ -92,7 +98,7 @@ struct SearchView: View {
                 }
                 .padding(20)
             case .toFewCharacters:
-                Text("Please type at least \(TheMetDefaults.minimumInputCharachters) Characters in the Searchfield to perform a search.")
+                Text("Please enter at least \(TheMetDefaults.minimumInputCharachters) Characters in the Searchfield to perform a search.")
                     .padding(50)
                     .opacity(0.5)
             case .error(let error):
@@ -100,6 +106,7 @@ struct SearchView: View {
                     .padding(50)
             }
         }
+        .multilineTextAlignment(.center)
         .padding(-20)
         .padding(.top, 30)
         .navigationBarTitleDisplayMode(.inline)
@@ -107,10 +114,13 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
+    
+    static let api = API()
+    
     static var previews: some View {
         Group {
-            SearchView()
-            SearchView()
+            SearchView(api: api)
+            SearchView(api: api)
                 .preferredColorScheme(.dark)
         }
     }

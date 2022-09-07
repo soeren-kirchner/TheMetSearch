@@ -10,9 +10,14 @@ import Foundation
 class ObjectViewModel: ObservableObject {
     
     @Published var loadingState: LoadingState<MetObject> = .loading
+    let api: API
+    
+    init(api: API)  {
+        self.api = api
+    }
     
     func fetch(for id: Int) async {
-        let result = await API.fetchObject(for: id)
+        let result = await api.fetchObject(for: id)
         await MainActor.run { [weak self] in
             switch result {
             case .success(let object):

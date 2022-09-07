@@ -12,6 +12,11 @@ class SearchViewModel: ObservableObject {
     @Published var objects = MetObjects(total: 0, objectIDs: [])
     @Published var searchText = ""
     @Published var searchState: SearchState = .toFewCharacters
+    let api: API
+
+    init(api: API)  {
+        self.api = api
+    }
     
     private var searchTask: Task<(), Never>?
     
@@ -30,7 +35,7 @@ class SearchViewModel: ObservableObject {
     }
 
     private func fetch(for keyword: String) async {
-        let result = await API.fetchObjects(for: keyword)
+        let result = await api.fetchObjects(for: keyword)
         if Task.isCancelled {
             print("Task canceled")
             return

@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct TheMetSearchApp: App {
+    
+    var api = API()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(api: api)
         }
     }
 }

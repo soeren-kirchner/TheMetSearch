@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GalleryView: View {
     
+    let api: API
     let images: [String]
     @Binding var selectedImage: String?
     
@@ -19,7 +20,7 @@ struct GalleryView: View {
                     .aspectRatio(1, contentMode: .fit)
                     .shadow(color: .black.opacity(0.15), radius: 3, x: -2, y: 2)
                     .overlay {
-                        GalleryImageView(url: URL(string: image))
+                        GalleryImageView(api: api, url: URL(string: image))
                             .padding()
                     }
                     .onTapGesture {
@@ -27,9 +28,6 @@ struct GalleryView: View {
                     }
             }
         }
-        .fullScreenCover(item: $selectedImage, onDismiss: {}, content: { galleryImage in
-            GalleryDetailView(selectedImage: $selectedImage)
-        })
     }
 }
 
@@ -38,9 +36,12 @@ extension String: Identifiable {
 }
 
 struct GalleryView_Previews_Wrapper: View {
+    
+    let api = API()
+    
     @State var selectedImage: String?
     var body: some View {
-        GalleryView(images: [
+        GalleryView(api: api, images: [
             "https://images.metmuseum.org/CRDImages/ep/original/LC-EP_1993_132_suppl_CH-004.jpg",
             "https://images.metmuseum.org/CRDImages/ep/original/LC-EP_1993_132_suppl_CH-003.jpg",
             "https://images.metmuseum.org/CRDImages/ep/original/LC-EP_1993_132_suppl_CH-002.jpg",

@@ -9,10 +9,15 @@ import SwiftUI
 
 struct PrimaryImageView: View {
     
-    @StateObject private var imageViewModel = ImageViewModel()
+    @StateObject private var imageViewModel: ImageViewModel
     let url: URL?
-    let maxHeight = 400.0
+    private let maxHeight = 400.0
         
+    init(api: API, url: URL?) {
+        self._imageViewModel = StateObject(wrappedValue: ImageViewModel(api: api))
+        self.url = url
+    }
+    
     var body: some View {
         VStack {
             switch imageViewModel.loadingState {

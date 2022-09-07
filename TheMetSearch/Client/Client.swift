@@ -15,7 +15,7 @@ class Client {
         let respone: HTTPURLResponse
     }
     
-    private static func fetch(request: URLRequest) async -> Result<ClientResult, ClientError> {
+    private func fetch(request: URLRequest) async -> Result<ClientResult, ClientError> {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let response = response as? HTTPURLResponse else {
@@ -36,7 +36,7 @@ class Client {
         }
     }
     
-    public static func fetchData<Value>(for request: URLRequest, of type: Value.Type) async -> Result<Value, ClientError> where Value: Decodable {
+    public func fetchData<Value>(for request: URLRequest, of type: Value.Type) async -> Result<Value, ClientError> where Value: Decodable {
         
         let result = await fetch(request: request)
         switch result {
@@ -54,13 +54,13 @@ class Client {
         }
     }
     
-    public static func downloadImage(from url: URL) async -> Result<UIImage, ClientError> {
+    public func downloadImage(from url: URL) async -> Result<UIImage, ClientError> {
         if let image = ImageCacheManager.instance.get(url: url) { return .success(image) }
         let result = await fetch(request: URLRequest(url: url))
         switch result {
         case .success(let clientResult):
             guard let newImage = UIImage(data: clientResult.data) else { return .failure(.InternalError(GenericError(message: "Image data corrupted"))) }
-            let expirationDate = getExpireDate(response: clientResult.respone)
+            let expirationDate = Client.getExpireDate(response: clientResult.respone)
             ImageCacheManager.instance.add(image: newImage, for: url, until: expirationDate)
             return .success(newImage)
         case .failure(let error):

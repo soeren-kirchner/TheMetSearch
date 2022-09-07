@@ -9,8 +9,13 @@ import SwiftUI
 
 struct ObjectView: View {
     
-    @StateObject var objectViewModel = ObjectViewModel()
+    @StateObject var objectViewModel: ObjectViewModel
     let objectID: Int
+    
+    init (api: API, objectID: Int) {
+        self._objectViewModel = StateObject(wrappedValue: ObjectViewModel(api: api))
+        self.objectID = objectID
+    }
     
     var body: some View {
         VStack {
@@ -18,7 +23,7 @@ struct ObjectView: View {
             case .loading:
                 ProgressView()
             case .success(let object):
-                ObjectSuccessView(object: object)
+                ObjectSuccessView(api: objectViewModel.api, object: object)
             case .error(let error):
                 Text("\(error.localizedDescription)")
             }
