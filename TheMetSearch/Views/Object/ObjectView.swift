@@ -28,12 +28,7 @@ struct ObjectView: View {
                 Text("\(error.localizedDescription)")
             }
         }
-        .background(
-            Image("background")
-                .resizable()
-                .overlay(Material.thickMaterial)
-                .ignoresSafeArea()
-        )
+        .background(BackgroundView())
         .task {
             await objectViewModel.fetch(for: objectID)
         }

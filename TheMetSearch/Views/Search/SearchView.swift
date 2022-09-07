@@ -25,12 +25,7 @@ struct SearchView: View {
                 resultArea
             }
             .padding(20)
-            .background(
-                Image("background")
-                    .resizable()
-                    .overlay(Material.thickMaterial)
-                    .ignoresSafeArea()
-            )
+            .background(BackgroundView())
             .buttonStyle(.plain)
         }
     }
