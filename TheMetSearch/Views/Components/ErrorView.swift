@@ -15,8 +15,6 @@ struct ErrorView: View {
         switch apiError {
         case .NotFound:
             errorLine(message: "Not Found.")
-        case .NetworkError(let underlyingError):
-            errorLine(message: "A network error occured.", underlyingError: underlyingError)
         case .TemporaryError(let underlyingError):
             errorLine(message: "A temporary error occured. Please try again later.", underlyingError: underlyingError)
         case .InternalError(let underlyingError):

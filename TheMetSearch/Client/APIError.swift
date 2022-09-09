@@ -9,7 +9,6 @@ import Foundation
 
 enum APIError: Error {
     case NotFound
-    case NetworkError(Error)
     case TemporaryError(Error)
     case InternalError(Error)
     
