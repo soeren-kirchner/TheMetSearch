@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MetObject: Decodable {
+struct MetObject: Decodable, Equatable {
     let objectID: Int
     let title: String
     let artistDisplayName: String

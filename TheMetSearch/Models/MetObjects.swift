@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MetObjects: Decodable, Hashable {
+struct MetObjects: Decodable, Hashable, Equatable {
     let total: Int
     let objectIDs: [Int]?
 }
