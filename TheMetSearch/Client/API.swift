@@ -13,14 +13,10 @@ class API {
     private let searchBaseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search"
     private let objectBaseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     
-    private let client: Client
+    private let client: ClientProtocol
     
-    init (client: Client? = nil) {
-        if let client = client {
-            self.client = client
-        } else {
-            self.client = Client()
-        }
+    init (client: ClientProtocol = Client()) {
+        self.client = client
     }
     
     private func searchUrl(for keyword: String) -> URL? {

@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
-class Client {
+class Client: ClientProtocol {
+    
+    private let session: URLSessionProtocol
+    
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
+    }
     
     struct ClientResult {
         let data: Data
@@ -17,7 +23,7 @@ class Client {
     
     private func fetch(request: URLRequest) async -> Result<ClientResult, ClientError> {
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await session.data(for: request, delegate: nil)
             guard let response = response as? HTTPURLResponse else {
                 return .failure(.InternalError(GenericError(message: "not a HTTPURLResponse")))
             }
@@ -36,7 +42,7 @@ class Client {
         }
     }
     
-    public func fetchData<Value>(for request: URLRequest, of type: Value.Type) async -> Result<Value, ClientError> where Value: Decodable {
+    func fetchData<Value>(for request: URLRequest, of type: Value.Type) async -> Result<Value, ClientError> where Value: Decodable {
         
         let result = await fetch(request: request)
         switch result {
@@ -54,7 +60,7 @@ class Client {
         }
     }
     
-    public func downloadImage(from url: URL) async -> Result<UIImage, ClientError> {
+    func downloadImage(from url: URL) async -> Result<UIImage, ClientError> {
         if let image = ImageCacheManager.instance.get(url: url) { return .success(image) }
         let result = await fetch(request: URLRequest(url: url))
         switch result {
@@ -81,4 +87,53 @@ class Client {
         
         return min(Date(timeIntervalSinceNow: maxAge), defaultDate)
     }
+}
+
+protocol ClientProtocol {
+    func fetchData<Value>(for request: URLRequest, of type: Value.Type) async -> Result<Value, ClientError> where Value: Decodable
+    func downloadImage(from url: URL) async -> Result<UIImage, ClientError>
+}
+
+protocol URLSessionProtocol {
+    func data(for request: URLRequest, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse)
+}
+
+extension URLSession: URLSessionProtocol {}
+
+class MockClient<Value>: ClientProtocol {
+  
+    let result: Result<Value, ClientError>
+    
+    init(result: Result<Value, ClientError>) {
+        self.result = result
+    }
+
+    func fetchData<Value>(for request: URLRequest, of type: Value.Type) async -> Result<Value, ClientError> where Value : Decodable {
+        return self.result as! Result<Value, ClientError>
+    }
+    
+    func downloadImage(from url: URL) async -> Result<UIImage, ClientError> {
+        return result as! Result<UIImage, ClientError>
+    }
+}
+
+class MockSession: URLSessionProtocol {
+    
+    let data: Data?
+    let urlResponse: URLResponse?
+    let error: Error?
+    
+    init(data: Data, urlResponse: URLResponse, error: Error?) {
+        self.data = data
+        self.urlResponse = urlResponse
+        self.error = error
+    }
+    
+    func data(for request: URLRequest, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse) {
+        if let error = error {
+            throw error
+        }
+        return(data!, urlResponse!)
+    }
+    
 }
