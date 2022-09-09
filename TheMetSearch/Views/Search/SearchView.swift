@@ -53,6 +53,7 @@ struct SearchView: View {
                     .foregroundColor(.searchFieldPlaceholder)
                     .opacity(searchViewModel.searchText.isEmpty ? 1 : 0)
                 TextField("", text: $searchViewModel.searchText)
+                    .accessibilityIdentifier("searchField")
                     .disableAutocorrection(true)
                     .onReceive(searchViewModel.$searchText
                         .debounce(for: 0.5, scheduler: RunLoop.main)) { _ in
@@ -94,6 +95,7 @@ struct SearchView: View {
                 .padding(20)
             case .toFewCharacters:
                 Text("Please enter at least \(TheMetDefaults.minimumInputCharachters) Characters in the Searchfield to perform a search.")
+                    .accessibilityIdentifier("MinimumCharachterHint")
                     .padding(50)
                     .opacity(0.5)
             case .error(let error):
