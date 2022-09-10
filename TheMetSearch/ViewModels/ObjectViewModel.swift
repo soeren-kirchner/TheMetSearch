@@ -21,10 +21,8 @@ class ObjectViewModel: ObservableObject {
         await MainActor.run { [weak self] in
             switch result {
             case .success(let object):
-                debugPrint(object)
                 self?.loadingState = .success(object)
             case .failure(let error):
-                print(error)
                 self?.loadingState = .error(error)
             }
         }

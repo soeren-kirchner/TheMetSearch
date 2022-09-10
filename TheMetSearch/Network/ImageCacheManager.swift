@@ -33,7 +33,6 @@ class ImageCacheManager {
             cache.removeObject(forKey: key)
             return nil
         }
-        print("found in cache")
         return wrappedImage.image
     }
 }
