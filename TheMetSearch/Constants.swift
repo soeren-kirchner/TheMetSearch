@@ -25,6 +25,7 @@ extension Color {
     static let searchFieldPlaceholder = Color("SearchFieldPlaceholder")
     static let listCellBackground = Color("ListCellBackground")
     static let listCellForeground = Color("ListCellForeground")
+    static let tint = Color("Tint")
 }
 
 extension Image {
