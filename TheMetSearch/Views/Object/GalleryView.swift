@@ -31,10 +31,6 @@ struct GalleryView: View {
     }
 }
 
-extension String: Identifiable {
-    public var id: String { self }
-}
-
 struct GalleryView_Previews_Wrapper: View {
     
     let api = API()
