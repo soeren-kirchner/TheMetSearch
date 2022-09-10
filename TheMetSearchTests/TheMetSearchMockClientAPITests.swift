@@ -23,7 +23,15 @@ class TheMetSearchMockClientAPITests: XCTestCase {
                                headerFields: ["ETag" : "12345678"])!
     }
     
-    func test_TheMetSearchAPI_Result_shouldBe_SuccessWitCorrectMetObject() async {
+    func getResult(for statusCode: Int) async -> Result<MetObject, APIError> {
+        let response = createSampleResponse(statusCode: statusCode)
+        let data = "".data(using: .utf8)!
+        let session = MockSession(data: data, urlResponse: response, error: nil)
+        let api = API(client: Client(session: session))
+        return await api.fetchObject(for: 1)
+    }
+    
+    func test_TheMetSearchAPI_Result_shouldBe_SuccessWithCorrectMetObject() async {
         let sample = SampleData.Sample_436533()
         let response = createSampleResponse(statusCode: 200)
         let session = MockSession(data: sample.data, urlResponse: response, error: nil)
@@ -36,6 +44,40 @@ class TheMetSearchMockClientAPITests: XCTestCase {
             XCTAssertEqual(object, sample.expectedResult)
         case .failure(_):
             XCTFail("Should return .success(MetObject)")
+        }
+    }
+    
+    func test_TheMetSearchAPI_Result_shouldBe_InternalErrorHTTPClientError() async {
+        let exceptions = [404]
+        for statucCode in 400..<500 {
+            if exceptions.contains(statucCode) { continue }
+            let result = await getResult(for: statucCode)
+            
+            guard case .failure(.InternalError(let error as ClientError)) = result else {
+                XCTFail("Expected to be InternalError")
+                return
+            }
+            
+            guard case .HTTPClientError = error else {
+                XCTFail("Underlying Error is expected to be HTTPClientError")
+                return
+            }
+        }
+    }
+    
+    func test_TheMetSearchAPI_Result_shouldBe_InternalError() async {
+        for statucCode in 500..<600 {
+            let result = await getResult(for: statucCode)
+            
+            guard case .failure(.TemporaryError(let error as ClientError)) = result else {
+                XCTFail("Expected to be TemporaryError")
+                return
+            }
+            
+            guard case .HTTPServerError = error else {
+                XCTFail("Underlying Error is expected to be HTTPServerError")
+                return
+            }
         }
     }
     
@@ -54,7 +96,7 @@ class TheMetSearchMockClientAPITests: XCTestCase {
     }
     
     func test_TheMetSearchAPI_Result_shouldBe_FailureInternalErrorDecodeError() async {
-        let sample = SampleData.Sample_CorupptedJson()
+        let sample = SampleData.Sample_CorruptedJson()
         let response = createSampleResponse(statusCode: 200)
         let session = MockSession(data: sample.data, urlResponse: response, error: nil)
         let api = API(client: Client(session: session))
