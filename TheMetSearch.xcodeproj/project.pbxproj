@@ -12,6 +12,11 @@
 		1161305928BE65F20064B8F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1161305828BE65F20064B8F7 /* Constants.swift */; };
 		116223BA28C67BC600946208 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116223B928C67BC600946208 /* ErrorView.swift */; };
 		116223BC28C6819A00946208 /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116223BB28C6819A00946208 /* NetworkMonitorManager.swift */; };
+		118570C328CB7F7B001ABC60 /* TheMetSearchTestsSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118570C228CB7F7B001ABC60 /* TheMetSearchTestsSampleData.swift */; };
+		118570C528CB84BF001ABC60 /* TheMetSearchMockClientAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118570C428CB84BF001ABC60 /* TheMetSearchMockClientAPITests.swift */; };
+		118570C828CBD4CF001ABC60 /* MetObjectExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118570C728CBD4CF001ABC60 /* MetObjectExamples.swift */; };
+		118570CA28CBD645001ABC60 /* TheMetSearchMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118570C928CBD645001ABC60 /* TheMetSearchMocks.swift */; };
+		11AF4EBE28CA4CC900DBBE48 /* TheMetSearchUITestsMinimumCharacterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AF4EBD28CA4CC900DBBE48 /* TheMetSearchUITestsMinimumCharacterTest.swift */; };
 		11DB163228BFC527004B05AF /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DB163128BFC527004B05AF /* APIError.swift */; };
 		11E8B6FA28C51E94000FF062 /* ImageErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E8B6F928C51E94000FF062 /* ImageErrorView.swift */; };
 		11E8B6FD28C5278C000FF062 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E8B6FC28C5278C000FF062 /* GalleryView.swift */; };
@@ -22,7 +27,6 @@
 		11FE5E8F28BD2FF5008B4082 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11FE5E8E28BD2FF5008B4082 /* Preview Assets.xcassets */; };
 		11FE5E9928BD2FF6008B4082 /* TheMetSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5E9828BD2FF6008B4082 /* TheMetSearchTests.swift */; };
 		11FE5EA328BD2FF6008B4082 /* TheMetSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EA228BD2FF6008B4082 /* TheMetSearchUITests.swift */; };
-		11FE5EA528BD2FF6008B4082 /* TheMetSearchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EA428BD2FF6008B4082 /* TheMetSearchUITestsLaunchTests.swift */; };
 		11FE5EB328BD3B37008B4082 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB228BD3B37008B4082 /* Client.swift */; };
 		11FE5EB528BD3B6A008B4082 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB428BD3B6A008B4082 /* ClientError.swift */; };
 		11FE5EB728BD3BBA008B4082 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FE5EB628BD3BBA008B4082 /* API.swift */; };
@@ -62,6 +66,11 @@
 		1161305828BE65F20064B8F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		116223B928C67BC600946208 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		116223BB28C6819A00946208 /* NetworkMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManager.swift; sourceTree = "<group>"; };
+		118570C228CB7F7B001ABC60 /* TheMetSearchTestsSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchTestsSampleData.swift; sourceTree = "<group>"; };
+		118570C428CB84BF001ABC60 /* TheMetSearchMockClientAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchMockClientAPITests.swift; sourceTree = "<group>"; };
+		118570C728CBD4CF001ABC60 /* MetObjectExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetObjectExamples.swift; sourceTree = "<group>"; };
+		118570C928CBD645001ABC60 /* TheMetSearchMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchMocks.swift; sourceTree = "<group>"; };
+		11AF4EBD28CA4CC900DBBE48 /* TheMetSearchUITestsMinimumCharacterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchUITestsMinimumCharacterTest.swift; sourceTree = "<group>"; };
 		11DB163128BFC527004B05AF /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		11E8B6F928C51E94000FF062 /* ImageErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageErrorView.swift; sourceTree = "<group>"; };
 		11E8B6FC28C5278C000FF062 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
@@ -75,7 +84,6 @@
 		11FE5E9828BD2FF6008B4082 /* TheMetSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchTests.swift; sourceTree = "<group>"; };
 		11FE5E9E28BD2FF6008B4082 /* TheMetSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMetSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FE5EA228BD2FF6008B4082 /* TheMetSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchUITests.swift; sourceTree = "<group>"; };
-		11FE5EA428BD2FF6008B4082 /* TheMetSearchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMetSearchUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		11FE5EB228BD3B37008B4082 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		11FE5EB428BD3B6A008B4082 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		11FE5EB628BD3BBA008B4082 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -126,6 +134,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		118570C628CBD49C001ABC60 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				118570C728CBD4CF001ABC60 /* MetObjectExamples.swift */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
 		11E8B6F828C51E67000FF062 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,15 +187,15 @@
 		11FE5E8628BD2FF4008B4082 /* TheMetSearch */ = {
 			isa = PBXGroup;
 			children = (
-				11FE5EB128BD3B1A008B4082 /* Client */,
+				11FE5E8728BD2FF4008B4082 /* TheMetSearchApp.swift */,
+				11FE5EB128BD3B1A008B4082 /* Network */,
 				11FE5EBA28BD3CF0008B4082 /* Models */,
 				11FE5EBF28BD3F35008B4082 /* ViewModels */,
 				11FE5EC028BD3F53008B4082 /* Views */,
-				11FE5E8728BD2FF4008B4082 /* TheMetSearchApp.swift */,
-				11FE5E8928BD2FF4008B4082 /* ContentView.swift */,
+				118570C628CBD49C001ABC60 /* Examples */,
+				1161305828BE65F20064B8F7 /* Constants.swift */,
 				11FE5E8B28BD2FF5008B4082 /* Assets.xcassets */,
 				11FE5E8D28BD2FF5008B4082 /* Preview Content */,
-				1161305828BE65F20064B8F7 /* Constants.swift */,
 			);
 			path = TheMetSearch;
 			sourceTree = "<group>";
@@ -196,6 +212,9 @@
 			isa = PBXGroup;
 			children = (
 				11FE5E9828BD2FF6008B4082 /* TheMetSearchTests.swift */,
+				118570C228CB7F7B001ABC60 /* TheMetSearchTestsSampleData.swift */,
+				118570C428CB84BF001ABC60 /* TheMetSearchMockClientAPITests.swift */,
+				118570C928CBD645001ABC60 /* TheMetSearchMocks.swift */,
 			);
 			path = TheMetSearchTests;
 			sourceTree = "<group>";
@@ -204,12 +223,12 @@
 			isa = PBXGroup;
 			children = (
 				11FE5EA228BD2FF6008B4082 /* TheMetSearchUITests.swift */,
-				11FE5EA428BD2FF6008B4082 /* TheMetSearchUITestsLaunchTests.swift */,
+				11AF4EBD28CA4CC900DBBE48 /* TheMetSearchUITestsMinimumCharacterTest.swift */,
 			);
 			path = TheMetSearchUITests;
 			sourceTree = "<group>";
 		};
-		11FE5EB128BD3B1A008B4082 /* Client */ = {
+		11FE5EB128BD3B1A008B4082 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				11FE5EB228BD3B37008B4082 /* Client.swift */,
@@ -220,7 +239,7 @@
 				11FE5ECF28BD5E87008B4082 /* ImageCacheManager.swift */,
 				116223BB28C6819A00946208 /* NetworkMonitorManager.swift */,
 			);
-			path = Client;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		11FE5EBA28BD3CF0008B4082 /* Models */ = {
@@ -245,6 +264,7 @@
 		11FE5EC028BD3F53008B4082 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11FE5E8928BD2FF4008B4082 /* ContentView.swift */,
 				1155C73728C275EF0039D22F /* Search */,
 				11E8B6FB28C52728000FF062 /* Object */,
 				11E8B6F828C51E67000FF062 /* Components */,
@@ -393,6 +413,7 @@
 				11FE5EC828BD4162008B4082 /* SearchView.swift in Sources */,
 				11E8B6FD28C5278C000FF062 /* GalleryView.swift in Sources */,
 				11E8B6FA28C51E94000FF062 /* ImageErrorView.swift in Sources */,
+				118570C828CBD4CF001ABC60 /* MetObjectExamples.swift in Sources */,
 				11FE5EB328BD3B37008B4082 /* Client.swift in Sources */,
 				11FE5EC428BD406F008B4082 /* ObjectViewModel.swift in Sources */,
 				1155C73928C276220039D22F /* SearchViewListCell.swift in Sources */,
@@ -414,7 +435,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118570CA28CBD645001ABC60 /* TheMetSearchMocks.swift in Sources */,
 				11FE5E9928BD2FF6008B4082 /* TheMetSearchTests.swift in Sources */,
+				118570C528CB84BF001ABC60 /* TheMetSearchMockClientAPITests.swift in Sources */,
+				118570C328CB7F7B001ABC60 /* TheMetSearchTestsSampleData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11FE5EA328BD2FF6008B4082 /* TheMetSearchUITests.swift in Sources */,
-				11FE5EA528BD2FF6008B4082 /* TheMetSearchUITestsLaunchTests.swift in Sources */,
+				11AF4EBE28CA4CC900DBBE48 /* TheMetSearchUITestsMinimumCharacterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
