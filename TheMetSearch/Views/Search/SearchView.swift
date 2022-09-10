@@ -15,6 +15,7 @@ struct SearchView: View {
     
     init (api: API) {
         self._searchViewModel = StateObject(wrappedValue: SearchViewModel(api: api))
+        UINavigationBar.appearance().tintColor = UIColor(.tint)
     }
     
     var body: some View {

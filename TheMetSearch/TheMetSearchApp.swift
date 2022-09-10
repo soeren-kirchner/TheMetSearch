@@ -15,6 +15,7 @@ struct TheMetSearchApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(api: api)
+                .tint(.tint)
         }
     }
 }
