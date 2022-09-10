@@ -14,8 +14,8 @@ extension MetObject {
                                    department: "The Cloisters",
                                    objectName: "Portal",
                                    culture: "Italian",
-                                   period: "", medium:
-                                    "Marble (Carrara marble)",
+                                   period: "",
+                                   medium: "Marble (Carrara marble)",
                                    dimensions: "13 ft. 2 in. × 76 in. × 14 in. (401.3 × 193 × 35.6 cm)",
                                    primaryImage: "https://images.metmuseum.org/CRDImages/cl/original/DP132217.jpg",
                                    primaryImageSmall: "https://images.metmuseum.org/CRDImages/cl/web-large/DP132217.jpg",
