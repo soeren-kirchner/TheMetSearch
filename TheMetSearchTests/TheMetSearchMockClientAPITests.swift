@@ -49,9 +49,9 @@ class TheMetSearchMockClientAPITests: XCTestCase {
     
     func test_TheMetSearchAPI_Result_shouldBe_InternalErrorHTTPClientError() async {
         let exceptions = [404]
-        for statucCode in 400..<500 {
-            if exceptions.contains(statucCode) { continue }
-            let result = await getResult(for: statucCode)
+        for statusCode in 400..<500 {
+            if exceptions.contains(statusCode) { continue }
+            let result = await getResult(for: statusCode)
             
             guard case .failure(.InternalError(let error as ClientError)) = result else {
                 XCTFail("Expected to be InternalError")
@@ -66,8 +66,8 @@ class TheMetSearchMockClientAPITests: XCTestCase {
     }
     
     func test_TheMetSearchAPI_Result_shouldBe_InternalError() async {
-        for statucCode in 500..<600 {
-            let result = await getResult(for: statucCode)
+        for statusCode in 500..<600 {
+            let result = await getResult(for: statusCode)
             
             guard case .failure(.TemporaryError(let error as ClientError)) = result else {
                 XCTFail("Expected to be TemporaryError")
