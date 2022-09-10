@@ -10,8 +10,6 @@ import SwiftUI
 struct SearchView: View {
     
     @StateObject var searchViewModel: SearchViewModel
-    @State var test: Bool = true
-    @State var test2: Bool = true
     
     init (api: API) {
         self._searchViewModel = StateObject(wrappedValue: SearchViewModel(api: api))
@@ -28,9 +26,19 @@ struct SearchView: View {
             .padding(20)
             .background(BackgroundView())
             .buttonStyle(.plain)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Menu {
+                        Toggle("Objects with Images", isOn: $searchViewModel.hasImages)
+                        Toggle("Objects are on View", isOn: $searchViewModel.isOnView)
+                    } label: {
+                        Image(systemName: "slider.horizontal.3")
+                    }
+                }
+            }
         }
     }
-    
+        
     var header: some View {
         VStack(alignment: .center) {
             Text("Search")
@@ -50,17 +58,12 @@ struct SearchView: View {
                 .padding(.leading, 5)
             
             ZStack(alignment: .leading) {
-                Text("Placeholder")
+                Text("Enter Keyword")
                     .foregroundColor(.searchFieldPlaceholder)
                     .opacity(searchViewModel.searchText.isEmpty ? 1 : 0)
                 TextField("", text: $searchViewModel.searchText)
                     .accessibilityIdentifier("searchField")
                     .disableAutocorrection(true)
-                    .onReceive(searchViewModel.$searchText
-                        .debounce(for: 0.5, scheduler: RunLoop.main)) { _ in
-                            print("received")
-                            searchViewModel.search()
-                        }
             }
             if case .searching = searchViewModel.searchState {
                 ProgressView().tint(.gray)

@@ -19,9 +19,18 @@ class API {
         self.client = client
     }
     
-    private func searchUrl(for keyword: String) -> URL? {
+    private func searchUrl(for keyword: String, hasImages: Bool, isOnView: Bool) -> URL? {
         var components = URLComponents(string: searchBaseUrl)
-        components?.queryItems = [URLQueryItem(name: "q", value: keyword)]
+        var queryItems = [
+            URLQueryItem(name: "q", value: keyword),
+        ]
+        if hasImages {
+            queryItems.append(URLQueryItem(name: "hasImages", value: String(hasImages)))
+        }
+        if isOnView {
+            queryItems.append(URLQueryItem(name: "isOnView", value: String(isOnView)))
+        }
+        components?.queryItems = queryItems
         return components?.url
     }
     
@@ -37,8 +46,8 @@ class API {
             }
     }
     
-    func fetchObjects(for keyword: String) async -> Result<MetObjects, APIError> {
-        guard let url = searchUrl(for: keyword) else {
+    func fetchObjects(for keyword: String, hasImages: Bool, isOnView: Bool) async -> Result<MetObjects, APIError> {
+        guard let url = searchUrl(for: keyword, hasImages: hasImages, isOnView: isOnView) else {
             return .failure(.InternalError(GenericError(message: "Could not construct url for keyword \(keyword)")))
         }
         return await fetchData(from: url, of: MetObjects.self)
