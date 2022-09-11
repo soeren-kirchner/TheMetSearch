@@ -14,7 +14,7 @@ struct ErrorView: View {
     var body: some View {
         switch apiError {
         case .NotFound:
-            errorLine(message: "Not Found.")
+            errorLine(message: "Nothing found. Try another keyword.")
         case .TemporaryError(let underlyingError):
             errorLine(message: "A temporary error occured. Please try again later.", underlyingError: underlyingError)
         case .InternalError(let underlyingError):
