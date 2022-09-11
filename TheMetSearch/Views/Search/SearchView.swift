@@ -98,7 +98,7 @@ struct SearchView: View {
                 }
                 .padding(20)
             case .toFewCharacters:
-                Text("Please enter at least \(TheMetDefaults.minimumInputCharachters) Characters in the Searchfield to perform a search.")
+                Text("Please enter at least \(TheMetDefaults.minimumInputCharachters) Characters in the search field to perform a search.")
                     .accessibilityIdentifier("MinimumCharachterHint")
                     .padding(50)
                     .opacity(0.5)
