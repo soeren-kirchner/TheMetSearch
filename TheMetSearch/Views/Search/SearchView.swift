@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchView: View {
     
     @StateObject var searchViewModel: SearchViewModel
+    @FocusState var showKeyboard: Bool
     
     init (api: API) {
         self._searchViewModel = StateObject(wrappedValue: SearchViewModel(api: api))
@@ -58,10 +59,22 @@ struct SearchView: View {
                 .padding(.leading, 5)
             
             ZStack(alignment: .leading) {
-                Text("Enter Keyword")
+                Text("Enter your Keyword")
                     .foregroundColor(.searchFieldPlaceholder)
                     .opacity(searchViewModel.searchText.isEmpty ? 1 : 0)
                 TextField("", text: $searchViewModel.searchText)
+                    .focused($showKeyboard)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button(action: {
+                                showKeyboard = false
+                            }, label: {
+                                Image(systemName: "keyboard.chevron.compact.down")
+                                    .foregroundColor(.tint)
+                            })
+                        }
+                    }
                     .accessibilityIdentifier("searchField")
                     .disableAutocorrection(true)
             }
