@@ -48,7 +48,7 @@ class TheMetSearchMockClientAPITests: XCTestCase {
     }
     
     func test_TheMetSearchAPI_Result_shouldBe_InternalErrorHTTPClientError() async {
-        let exceptions = [404]
+        let exceptions = [404] // Special case. (NotFound)
         for statusCode in 400..<500 {
             if exceptions.contains(statusCode) { continue }
             let result = await getResult(for: statusCode)
