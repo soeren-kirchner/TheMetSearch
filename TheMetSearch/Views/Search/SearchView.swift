@@ -93,7 +93,7 @@ struct SearchView: View {
                             }
                         }
                     } else {
-                        Text("No result")
+                        Text("No results. Try another keyword.")
                     }
                 }
                 .padding(20)
