@@ -8,6 +8,10 @@
 import Foundation
 import SwiftUI
 
+/**
+ The API is implemented to transform client errors into errors that are relevant to the UI or the user.
+ The underlying errors are passed along for debugging purposes though.
+*/
 class API {
     
     private let searchBaseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search"
